@@ -1,0 +1,41 @@
+Код от 4.12
+#include <iostream>
+using namespace std;
+int main()
+{
+  int max= -10000000;
+  int s;
+  int j = 1;
+  int i = 1;
+  int n=0;
+  int a;
+  setlocale(LC_ALL, "RU");
+  while (n<=0)
+  {
+    cout « "Введите количество элементов" « endl;
+    cin » n;
+  }
+  while(i<=n)
+  {
+    cout« "Введите элемент" « endl;
+    cin» a;
+    if (a>max)
+    {
+      s=1;
+      max=a;
+      j=i;
+    }
+    else
+    {
+      if (max==a)
+      {
+        s+=1;
+      }
+    }
+  i++;
+  }
+  cout «"max число = "« max « endl;
+  cout «"кол-во элементов = "« s « endl;
+  cout «"порядок первого max числа = "« j « endl;
+  return 0;
+}
