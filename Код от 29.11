@@ -1,0 +1,27 @@
+#include <iostream> 
+using namespace std; 
+int main() 
+{ 
+    int s=0; 
+    int n=0; 
+    int i=1; 
+    double x;
+    double u=1;
+    setlocale(LC_ALL, "RU"); 
+    while (n<=0) 
+    { 
+        cout << "Введите количество элементов" << endl; 
+        cin >> n; 
+    } 
+            cout<< "Введите x" << endl; 
+        cin>> x; 
+    while(i<=n) 
+    { 
+        s=s+u;
+        u=u * x / i;
+        i++; 
+    } 
+    cout << "Сумма элементов = "<< s << endl;
+    
+    return 0; 
+} 
