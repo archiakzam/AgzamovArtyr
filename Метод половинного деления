@@ -1,0 +1,27 @@
+#include <iostream> 
+#include <cmath> 
+#include <math.h> 
+using namespace std; 
+const double epsilon = 1e-6; 
+int main() { 
+    setlocale(LC_ALL, "Rus"); 
+    double a, b, c; 
+    double fb; 
+    double fc; 
+    cout << "Введите a: "; 
+    cin >> a; 
+    cout << "Введите b: "; 
+    cin >> b; 
+    while (abs(b - a) >= epsilon) { 
+        c = (a + b) / 2; 
+        fb = 0.1*pow(b,2)-b*log(b); 
+        fc = 0.1*pow(c,2)-c*log(c); 
+        if (fb * fc < 0) 
+            a = c; 
+        else 
+            b = c; 
+    } 
+    cout << b; 
+    return 0; 
+} 
+ 
