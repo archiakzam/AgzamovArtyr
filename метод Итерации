@@ -1,56 +1,32 @@
 #include <iostream> 
-
 #include <cmath> 
-
 #include <math.h> 
-
 using namespace std; 
-
- 
-
 const double epsilon = 1e-6; 
-
- 
-
+    double g(double x) { 
+    return x+ 0.1*pow(x,2)-x*log(x); 
+} 
+double iterative(double x0, int maxIterations, double epsilon) { 
+    double currentX = x0; 
+    for (int i = 0; i < maxIterations; i++) { 
+        double nextX = g(currentX); 
+        if (abs(nextX - currentX) < epsilon) { 
+            return nextX; 
+            } 
+        currentX = nextX; 
+    } 
+    return currentX; 
+} 
 int main() { 
-
-setlocale(LC_ALL, "Rus"); 
-
-double a, b, c; 
-
-double fb; 
-
-double fc; 
-
-cout << "Введите a: "; 
-
-cin >> a; 
-
-cout << "Введите b: "; 
-
-cin >> b; 
-
-while (abs(b - a) >= epsilon) { 
-
-c = (a + b) / 2; 
-
-fb = 0.1*pow(b,2)-b*log(b); 
-
-fc = 0.1*pow(c,2)-c*log(c); 
-
-if (fb * fc < 0) 
-
-a = c; 
-
-else 
-
-b = c; 
-
+    setlocale(LC_ALL, "Rus"); 
+    double a; 
+    double b; 
+    int maxIterations = 1000; 
+    cout<<"Введите a и b"<<endl; 
+    cin>>a; 
+    cin>>b; 
+    double x0 = (a + b) / 2; 
+    double x = iterative(x0, maxIterations, epsilon); 
+    cout << "X равен: " << x; 
+    return 0; 
 } 
-
-cout << b; 
-
-return 0; 
-
-} 
- 
