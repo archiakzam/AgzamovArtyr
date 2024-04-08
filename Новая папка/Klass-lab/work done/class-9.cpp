@@ -34,7 +34,7 @@ int main(){
         cout << "Enter count of element of list number 2: ";
         cin >> count;
         if (count < 1) throw error_empty();
-        cout << "¬ведите элементы списка: ";
+        cout << "Enter element of list: ";
         for (int i = 0; i < count; ++i)
         {
             cin >> x;
