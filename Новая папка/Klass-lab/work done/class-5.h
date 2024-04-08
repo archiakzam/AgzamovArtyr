@@ -3,11 +3,16 @@
 #include<iostream>
 #include<string>
 using namespace std;
-class person{
+class Object {
+public:
+	virtual void print() = 0;
+};
+class person:public Object{
 protected:
     string name;
     int age;
 public:
+    person() {age = 0;name = "";}
     person(string name, int age){
         this->name= name;
         this->age=age;
@@ -33,7 +38,24 @@ public:
     virtual int get_age() {
         return age;
     }
-    friend class Vector;
+    void print() override {
+		cout << this->name << "name" << endl;
+		cout << this->age << " age" << endl;
+	}
+    friend istream& operator >>(istream& is, person& per) {
+		cout << "name: ";
+		getline(is, per.name);
+		cout << "enter age: ";
+		(is >> per.age).ignore();
+		return is;
+	}
+
+	friend ostream& operator <<(ostream& os, person& stud) {
+		cout << " name: " << stud.name << endl;
+
+		cout << " age: " << stud.age << endl;
+		return os;
+	}
 
 };
 class student:public person{
@@ -43,6 +65,7 @@ private:
     friend ostream& operator <<(ostream& out, const student & Student);
     friend istream& operator >>(istream& in, const student& Student);
 public:
+    student() {subject = "";grade = 0;age = 0;name = "";}
     student(string name, int age, string subject, int grade) : person(name, age){
         this->subject= subject;
         this->grade=grade;
@@ -105,4 +128,46 @@ istream& operator >> (istream& in, student& Student){
     Student.SetGrade(grade);
     return in;
 }
+class Vector
+{
+public:
+	friend ostream& operator<<(ostream& out, const Vector& v) {
+		if (v.size == 0) {
+			cout << "\nВектор пустой" << endl;
+		}
+		else {
+			Object** ptr = v.beg;
+			for (int i = 0; i < v.cur; i++) {
+				(*ptr)->print();
+				ptr++;
+			}
+		}
+		return out;
+	}
 
+	void Add(Object* ptr) {
+		if (cur < size) {
+			beg[cur] = ptr;
+			cur++;
+		}
+	}
+
+
+	Vector() {
+		beg = 0;
+		size = 0;
+		cur = 0;
+	}
+
+	Vector(int lin) {
+		beg = new Object * [lin];
+		size = lin;
+		cur = 0;
+	}
+
+	~Vector() {};
+private:
+	Object** beg;
+	int size;
+	int cur;
+};
