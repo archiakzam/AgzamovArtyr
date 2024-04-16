@@ -9,6 +9,7 @@ int main(){
     chel.check_grade();
     cin>>chel;
     cout<<chel;
+    chel.check_grade();
     return 0;
 
 }

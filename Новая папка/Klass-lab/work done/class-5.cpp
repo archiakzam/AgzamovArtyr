@@ -18,7 +18,7 @@ int main(){
 
 	Object* p = &per;
 	vec.Add(p);
-
+	
 	p = &stud;
 	vec.Add(p);
 

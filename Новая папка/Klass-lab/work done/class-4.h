@@ -45,7 +45,7 @@ public:
         this->grade=grade;
         this->name=name;
         this->age=age;
-        cout<<"Constructor student"<<endl<<endl;
+        
     }
     student(const student& Student): person(name, age){
         this->name=Student.name;
@@ -60,7 +60,7 @@ public:
         this->grade=Student.grade;
     }
     ~student(){
-        cout<<"destructor student"<<endl<<endl;
+        
     }
     void SetSubject(string subject){
         this->subject=subject;

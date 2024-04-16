@@ -1,14 +1,17 @@
 #pragma once
 #include <iostream>
+#include <istream>
 #include <vector>
 using namespace std;
-
 
 class Pair {
 private:
     int first;
     double second;
+    friend ostream& operator<<(ostream& out, const List& list);
     friend istream& operator>>(istream& in, List& list);
+    friend ostream& operator<<(ostream& out, const Pair& p);
+    friend class List;
 public:
     Pair() : first(0), second(0.0) {}
     Pair(int f, double s) : first(f), second(s) {}
@@ -18,11 +21,11 @@ public:
     result.second = this->second * p.second;
     return result;
 }
-    friend ostream& operator<<(ostream& out, const Pair& p) {
+};
+ostream& operator<<(ostream& out, const Pair& p) {
         out << p.first << " : " << p.second;
         return out;
     }
-};
 
 struct Node {
 public:
@@ -32,14 +35,11 @@ public:
 
 };  
 
-
 class List {
 private:
     int size;
     Node* head;
     Node* tail;
-    friend ostream& operator<<(ostream& out, const List& list);
-    friend istream& operator >> (istream& in, const List& list);
 public:
     void push_back(const Pair& data){
         Node* new_node = new Node;

@@ -9,8 +9,6 @@ int main(){
     system("chcp 1251>null");
     system("cls");
 
-    system("chcp 1251");
-    system("cls");
     List sp1,sp2;
     int count,x,index,h;
     cout << "Enter element count: ";
